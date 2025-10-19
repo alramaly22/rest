@@ -18,6 +18,78 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <title>Marosh Bakery</title>
+    <Style>
+        /*=============== PIZZA LOADER ===============*/
+        
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: hsl(24, 86%, 92%);
+            /* نفس اللون الأساسي لموقعك */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .pizza {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            animation: float 2s ease-in-out infinite;
+        }
+        /* حركة خفيفة للبيتزا */
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: scale(0.85) rotate(-5deg);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+        }
+        /* لما الطبقة تظهر */
+        
+        .layer.show {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        /* glow النهائي */
+        
+        .glow.show {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                filter: drop-shadow(0 0 0px rgba(255, 255, 150, 0));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 255, 120, 0.8));
+            }
+            100% {
+                filter: drop-shadow(0 0 0px rgba(255, 255, 150, 0));
+            }
+        }
+    </Style>
 </head>
 
 <body>
@@ -47,10 +119,18 @@
             </div>
         </nav>
     </header>
-
-
     <!--==================== MAIN ====================-->
     <main class="main">
+        <!-- ========== LOADER END ========== -->
+        <div id="loader">
+            <div class="pizza">
+                <img src="assets/img/1.png" class="layer dough">
+                <img src="assets/img/2.png" class="layer sauce hidden">
+                <img src="assets/img/3.png" class="layer cheese hidden">
+                <img src="assets/img/4.png" class="layer toppings hidden">
+                <img src="assets/img/5.png" class="layer glow hidden">
+            </div>
+        </div>
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
             <div class="home__container container grid">
@@ -593,7 +673,7 @@
             <a href="# " class="footer__link ">Privacy Policy</a>
         </div>
         <span class="footer__copy ">
-            &#169; All Rights Reserved By Alramly
+            &#169; All Rights Reserved By <a href="#">Alramly</a>
         </span>
     </footer>
 
@@ -668,6 +748,25 @@
             // تحديث الأسعار عند التحميل
             updatePrices(basePrice);
         });
+    </script>
+
+    <script>
+        const layers = document.querySelectorAll('.layer');
+        const mainContent = document.getElementById('main-content');
+        const loader = document.getElementById('loader');
+
+        let delay = 800;
+
+        layers.forEach((layer, i) => {
+            setTimeout(() => {
+                layer.classList.add('show');
+            }, delay * (i + 1));
+        });
+
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+        }, delay * (layers.length + 2));
     </script>
 
 
