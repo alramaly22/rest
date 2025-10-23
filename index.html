@@ -681,36 +681,59 @@
     <a href="# " class="scrollup " id="scroll-up ">
         <i class="ri-arrow-up-circle-fill "></i>
     </a>
+
     <script>
-        const modal = document.getElementById('orderModal');
+        // ==================== المودال الأساسي (Ubereats وغيره) ====================
+        const modal = document.getElementById('deliveryModal');
         const closeBtn = modal.querySelector('.close');
         const orderButtons = document.querySelectorAll('.products__button');
 
+        // ==================== المودال الجديد (اختيار دليفري أو استلام بنفسه) ====================
+        const choiceModal = document.getElementById('choiceModal');
+        const deliveryBtn = document.getElementById('deliveryBtn');
+        const pickupBtn = document.getElementById('pickupBtn');
+        const closeChoice = choiceModal.querySelector('.close');
+
+        // لما المستخدم يضغط على زرار الطلب
         orderButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                modal.style.display = 'block';
+                choiceModal.style.display = 'flex'; // نفتح المودال الأول
             });
         });
 
+        // لو اختار دليفري
+        deliveryBtn.addEventListener('click', () => {
+            choiceModal.style.display = 'none';
+            modal.style.display = 'block'; // نعرض المودال القديم بتاع Ubereats وغيره
+        });
+
+        // لو اختار استلام بنفسه
+        pickupBtn.addEventListener('click', () => {
+            choiceModal.style.display = 'none';
+            window.location.href = 'tel:0287907859';
+        });
+
+        // زر الإغلاق في المودال الأساسي
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
 
+        // زر الإغلاق في مودال الاختيار
+        closeChoice.addEventListener('click', () => {
+            choiceModal.style.display = 'none';
+        });
+
+        // الضغط خارج أي مودال يقفله
         window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
+            if (e.target === modal) modal.style.display = 'none';
+            if (e.target === choiceModal) choiceModal.style.display = 'none';
         });
 
         // ==================== PRICE SIZE HANDLER ====================
 
-        // تحديد كل أزرار المقاسات
         const sizeButtons = document.querySelectorAll('.size-btn');
-
-        // تحديد كل كروت المنتجات
         const productCards = document.querySelectorAll('.products__card');
 
-        // دالة لتحديث السعر لكل المنتجات
         function updatePrices(basePrice) {
             productCards.forEach(card => {
                 const priceElement = card.querySelector('.products__price');
@@ -719,33 +742,19 @@
             });
         }
 
-        // عند الضغط على أي زر من أزرار المقاسات
         sizeButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                // إزالة الحالة النشطة من جميع الأزرار
                 sizeButtons.forEach(b => b.classList.remove('active'));
-
-                // تفعيل الزر الحالي
                 btn.classList.add('active');
-
-                // قراءة السعر الأساسي من الزر
                 const basePrice = parseFloat(btn.getAttribute('data-price'));
-
-                // تحديث الأسعار
                 updatePrices(basePrice);
             });
         });
 
-        // ==================== عند تحميل الصفحة ====================
         window.addEventListener('DOMContentLoaded', () => {
-            // اختيار الزر Small (أول زر أو الزر اللي عليه active)
             const initialBtn = document.querySelector('.size-btn.active') || sizeButtons[0];
             initialBtn.classList.add('active');
-
-            // قراءة السعر الأساسي من الزر
             const basePrice = parseFloat(initialBtn.getAttribute('data-price'));
-
-            // تحديث الأسعار عند التحميل
             updatePrices(basePrice);
         });
     </script>

@@ -143,6 +143,7 @@
                         <button class="products__button open-modal">
                             <i class="ri-shopping-bag-3-fill"></i>
                     </button>
+
                     </article>
 
                     <article class="products__card">
@@ -182,7 +183,7 @@
                     </article>
 
                     <article class="products__card">
-                        <img src="assets/img/kaak/minihotdog.png" alt="" class="products__imgextra2">
+                        <img src="assets/img/new/1.png" alt="" class="products__imgextra2">
                         <h3 class="products__name">Mini Hot dog<br>mini</h3>
                         <span class="products__price">$3.50</span>
                         <button class="products__button open-modal">
@@ -218,7 +219,7 @@
                     </article>
 
                     <article class="products__card">
-                        <img src="assets/img/kaak/Mini_halome-removebg-preview.png" alt="" class="products__img">
+                        <img src="assets/img/new/hallon.png" alt="" class="products__img2">
                         <h3 class="products__name">Mini halome<br>mini</h3>
                         <span class="products__price">$9.50</span>
                         <button class="products__button open-modal">
@@ -237,7 +238,7 @@
 
                     <article class="products__card">
                         <img src="assets/img/kaak/Mini Mexicano vegetables.png" alt="" class="products__img2">
-                        <h3 class="products__name">Mini MexicanaVegetables<br>mini</h3>
+                        <h3 class="products__name">Mini Mexicana <br> Vegetables<br>mini</h3>
                         <span class="products__price">$2.50</span>
                         <button class="products__button open-modal">
                             <i class="ri-shopping-bag-3-fill"></i>
@@ -255,7 +256,20 @@
                 </div>
             </section>
             <!-- important -->
-            <div id="orderModal" class="modal">
+            <!-- ========== NEW MODAL STEP ========== -->
+            <div id="choiceModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>How would you like to order?</h2>
+                    <div class="choice-buttons">
+                        <button id="deliveryBtn" class="choice-btn">Delivery</button>
+                        <button id="pickupBtn" class="choice-btn">Pickup</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== DELIVERY MODAL ========== -->
+            <div id="deliveryModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Order Now From:</h2>
@@ -384,32 +398,45 @@
             <i class="ri-arrow-up-circle-fill"></i>
         </a>
         <script>
-            // ==================== MODAL HANDLER ====================
-
-            // تحديد عناصر المودال
-            const modal = document.getElementById('orderModal');
-            const closeBtn = modal.querySelector('.close');
+            // المودالات
+            const choiceModal = document.getElementById('choiceModal');
+            const deliveryModal = document.getElementById('deliveryModal');
             const orderButtons = document.querySelectorAll('.products__button');
+            const closeBtns = document.querySelectorAll('.modal .close');
 
-            // عند الضغط على أي زر من أزرار الطلب
+            // فتح نافذة الاختيار أولاً
             orderButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    modal.style.display = 'block';
+                    choiceModal.style.display = 'block';
                 });
             });
 
-            // عند الضغط على زر الإغلاق
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
+            // عند الضغط على Pickup → يتصل مباشرة
+            document.getElementById('pickupBtn').addEventListener('click', () => {
+                window.location.href = "tel:0287907859";
             });
 
-            // عند الضغط خارج المودال
+            // عند الضغط على Delivery → يظهر المودال الأصلي بتاع المواقع
+            document.getElementById('deliveryBtn').addEventListener('click', () => {
+                choiceModal.style.display = 'none';
+                deliveryModal.style.display = 'block';
+            });
+
+            // إغلاق المودالات
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.modal').style.display = 'none';
+                });
+            });
+
+            // الضغط خارج المودال يقفله
             window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
+                if (e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
                 }
             });
         </script>
+
 
         <script>
             const layers = document.querySelectorAll('.layer');
