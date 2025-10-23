@@ -640,6 +640,17 @@ img {
     transition: transform .4s;
 }
 
+.products__img223n {
+    width: 250px;
+    position: absolute;
+    top: -3.5rem;
+    left: -2rem;
+    right: 0;
+    margin: 0 auto;
+    filter: var(--shadow-small-img);
+    transition: transform .4s;
+}
+
 .products__imgextra2 {
     width: 90px;
     position: absolute;
@@ -979,6 +990,59 @@ img {
 }
 
 
+/* ==================== FIRST MODAL (DELIVERY OR PICKUP) ==================== */
+
+.choice-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.choice-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.choice-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.choice-buttons button {
+    background-color: #ff4b2b;
+    color: #fff;
+    border: none;
+    padding: 0.9rem 1.2rem;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.choice-buttons button:hover {
+    background-color: #ff6b4d;
+    transform: scale(1.05);
+}
+
+
 /*=============== CONTACT ===============*/
 
 .contact__container {
@@ -1222,23 +1286,71 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
+
+/* ===== محتوى المودال ===== */
+
 .modal-content {
-    margin: auto;
     display: block;
     max-width: 90%;
-    max-height: 90%;
+    max-height: 85vh;
     border-radius: 1rem;
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease-in-out;
 }
+
+
+/* ===== زر الإغلاق ===== */
 
 .close {
     position: absolute;
-    top: 20px;
-    right: 35px;
-    color: var(--white-color);
-    font-size: 3rem;
+    top: 10px;
+    right: 20px;
+    color: var(--first-color);
+    font-size: 2.5rem;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--first-color-alt, #fff);
+}
+
+
+/*=============== RESPONSIVE DESIGN ===============*/
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 75vh;
+        border-radius: 0.75rem;
+    }
+    .close {
+        top: 5px;
+        right: 15px;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal {
+        padding: 0.5rem;
+    }
+    .modal-content {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: 0.5rem;
+    }
+    .close {
+        top: 0;
+        right: 10px;
+        font-size: 1.8rem;
+    }
 }
 
 
@@ -1552,6 +1664,10 @@ img {
     .products__img {
         width: 200px;
         top: -4rem;
+    }
+    .products__img223n {
+        width: 200px;
+        top: 0;
     }
     .products__imgbreak {
         width: 256px;
