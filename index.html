@@ -269,7 +269,7 @@
         </section>
 
         <!--==================== RECIPE ====================-->
-        <section class="recipe section">
+        <!-- <section class="recipe section">
             <h2 class="section__title">Fresh And <br> Natural Ingredients</h2>
             <div class="recipe__container container grid">
                 <div class="recipe__list grid">
@@ -312,8 +312,50 @@
 
                 <img src="assets/img/recipe-img.png" alt="" class="recipe__img">
             </div>
-        </section>
+        </section> -->
 
+        <section class="new section" id="new">
+            <h2 class="section__title">
+                New Categories
+            </h2>
+            <div class="new__container container grid">
+                <article class="new__card">
+                    <img src="assets/img/indoor.jpg" alt="" class="new__img">
+                    <a href="#" class="new__link">
+                        <div class="new__data">
+                            <h2 class="new__title">
+                                Hoodie & Sweatshirt
+                            </h2>
+                            <i class="ri-gift-fill"></i>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="new__card">
+                    <img src="assets/img/Hot doge deal.jpg" alt="" class="new__img">
+                    <a href="#" class="new__link">
+                        <div class="new__data">
+                            <h2 class="new__title">
+                                Hoodie & Sweatshirt
+                            </h2>
+                            <i class="ri-gift-fill"></i>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- <article class="new__card">
+                    <img src="assets/img/2.png" alt="" class="new__img">
+                    <a href="#" class="new__link">
+                        <div class="new__data">
+                            <h2 class="new__title">
+                                Hoodie & Sweatshirt
+                            </h2>
+                            <i class="ri-gift-fill"></i>
+                        </div>
+                    </a>
+                </article> -->
+            </div>
+        </section>
         <!--==================== PRODUCTS ====================-->
         <section class="products section" id="products">
             <h2 class="section__title">The Most <br> Devoured Pizzas</h2>
@@ -373,7 +415,7 @@
 
                 <!-- article 6 -->
                 <article class="products__card">
-                    <img src="assets/img/pizza/OREO.png" alt="" class="products__imgoreo">
+                    <img src="assets/img/new/oreo.png" alt="" class="products__imgoreo">
                     <h3 class="products__name">Oreo<br> Pizza</h3>
                     <span class="products__price">  </span>
                     <button class="products__button open-modal">
@@ -552,7 +594,20 @@
             </div>
         </section>
         <!-- important -->
-        <div id="orderModal" class="modal">
+        <!-- ========== NEW MODAL STEP ========== -->
+        <div id="choiceModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>How would you like to order?</h2>
+                <div class="choice-buttons">
+                    <button id="deliveryBtn" class="choice-btn">Delivery</button>
+                    <button id="pickupBtn" class="choice-btn">Pickup</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DELIVERY MODAL ========== -->
+        <div id="deliveryModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Order Now From:</h2>
@@ -599,12 +654,7 @@
                                 <span>View On Map</span>
                             </a>
                         </div>
-
-
-
-
                     </div>
-
                     <div style="text-align: center; ">
                         <h3 class="contact__title ">Delivery</h3>
                         <div class="contact__delivery ">
@@ -681,6 +731,21 @@
     <a href="# " class="scrollup " id="scroll-up ">
         <i class="ri-arrow-up-circle-fill "></i>
     </a>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // الزرار اللي بيفتح المودال
+            const modalButton = document.querySelector(".open-modal");
+            // كل الـ articles اللي عايزها تعمل نفس وظيفة الزرار
+            const articles = document.querySelectorAll(".new__card");
+
+            articles.forEach(article => {
+                article.addEventListener("click", function() {
+                    // بننفذ نفس الحدث اللي بيحصل لما ندوس على الزرار
+                    modalButton.click();
+                });
+            });
+        });
+    </script>
 
     <script>
         // ==================== المودال الأساسي (Ubereats وغيره) ====================
@@ -758,6 +823,7 @@
             updatePrices(basePrice);
         });
     </script>
+
 
     <script>
         const layers = document.querySelectorAll('.layer');
