@@ -696,9 +696,9 @@ img {
 }
 
 .products__imgoreo {
-    width: 92px;
+    width: 127px;
     position: absolute;
-    top: -3.5rem;
+    top: -2.5rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -1228,6 +1228,48 @@ img {
 
 /*=============== Card =============== */
 
+.new {
+    background: var(--container-color);
+}
+
+.new__container {
+    row-gap: 2.5rem;
+    padding-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.new__card {
+    justify-self: center;
+}
+
+.new__img {
+    width: 270px;
+    margin-bottom: 1rem;
+}
+
+.new__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--first-color);
+    padding-right: .75rem;
+}
+
+.new__link i {
+    font-size: 1.25rem;
+    transition: .3s;
+}
+
+.new__title {
+    font-size: var(--h2-font-size);
+    margin-bottom: .5rem;
+    color: var(--first-color);
+}
+
+.new__link:hover i {
+    transform: translateX(.25rem);
+}
+
 
 /*=============== MENU SECTION ===============*/
 
@@ -1437,6 +1479,12 @@ img {
         padding: .75rem 1rem;
         border-radius: 4rem;
     }
+    .new__img {
+        width: 230px;
+    }
+    .new__link {
+        padding-right: 0;
+    }
 }
 
 
@@ -1492,6 +1540,10 @@ img {
     .footer__social,
     .footer__pay {
         column-gap: 1.5rem;
+    }
+    .new__container {
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
     }
 }
 
@@ -1678,8 +1730,8 @@ img {
         top: 0rem;
     }
     .products__imgoreo {
-        width: 137px;
-        top: -4rem;
+        width: 210px;
+        top: -3rem;
     }
     .products__img3 {
         width: 150px;
@@ -1792,7 +1844,22 @@ img {
     .scrollup {
         right: 3rem;
     }
+    .new__container {
+        grid-template-columns: repeat(2, max-content);
+        padding-bottom: 4.5rem;
+        gap: 4.5rem;
+    }
+    .new__img {
+        width: 450px;
+        margin-bottom: 1.25rem;
+    }
+    .new__title {
+        font-size: var(--h3-font-size);
+    }
 }
+
+
+/* cart */
 
 .cart__container {
     background: #fff;

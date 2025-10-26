@@ -64,7 +64,6 @@ const swiperPopular = new Swiper('.popular__swiper', {
 /*=============== SHOW SCROLL UP ===============*/
 function scrollUp() {
     const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 200 viewport height, add the show-scroll class to the a tag with the scroll-top class
     if (this.scrollY >= 350) scrollUp.classList.add('show-scroll');
     else scrollUp.classList.remove('show-scroll')
 }
@@ -82,6 +81,6 @@ sr.reveal(`.home__data , .popular__container , .footer`)
 sr.reveal(`.home__board`, { delay: 700, distance: '100px', origin: 'right' })
 sr.reveal(`.home__pizza`, { delay: 1400, distance: '100px', origin: 'bottom', rotate: { z: -90 } })
 sr.reveal(`.home__ingredient`, { delay: 2000, interval: 100 })
-sr.reveal(`.about__data , .recipe__list ,.contact__data`, { origin: 'right' })
-sr.reveal(`.about__img ,.recipe__img ,.contact__image`, { origin: 'left' })
+sr.reveal(`.about__data , .recipe__list ,.contact__data ,.new__data `, { origin: 'right' })
+sr.reveal(`.about__img ,.recipe__img ,.contact__image ,.new__img , .services__card`, { origin: 'left' })
 sr.reveal(`.products__card`, { interval: 100 })
