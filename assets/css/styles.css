@@ -143,6 +143,54 @@ img {
     overflow: hidden;
 }
 
+.nn1 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 70%), rgba(0, 0, 0, 0.7)), url(../img/back2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nn2 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 38%), rgb(0 0 0 / 58%)), url(../img/back1.jpg);
+    /* background-size: cover; */
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.nn3 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 46%), rgb(0 0 0 / 47%)), url(../img/back5.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nn4 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 48%), rgba(0, 0, 0, 0.7)), url(../img/back2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nn5 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 48%), rgba(0, 0, 0, 0.7)), url(../img/back3.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nn6 {
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 48%), rgba(0, 0, 0, 0.7)), url(../img/back3.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
 /*=============== HEADER & NAV ===============*/
 
@@ -428,7 +476,11 @@ img {
 /*===================== Services ========== */
 
 .services {
-    background-color: var(--container-color);
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 70%), rgba(0, 0, 0, 0.7)), url(../img/back1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
 .services__container {
@@ -633,6 +685,17 @@ img {
     width: 120px;
     position: absolute;
     top: -3.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    filter: var(--shadow-small-img);
+    transition: transform .4s;
+}
+
+.products__imgtesto {
+    width: 175px;
+    position: absolute;
+    top: -1rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -1229,7 +1292,11 @@ img {
 /*=============== Card =============== */
 
 .new {
-    background: var(--container-color);
+    background-attachment: fixed;
+    background: linear-gradient(rgb(255 255 255 / 70%), rgba(0, 0, 0, 0.7)), url(../img/back2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
 .new__container {
@@ -1716,6 +1783,10 @@ img {
     .products__img {
         width: 200px;
         top: -4rem;
+    }
+    .products__imgtesto {
+        width: 256px;
+        top: 0;
     }
     .products__img223n {
         width: 200px;
